@@ -6,6 +6,7 @@ use App\Admin;
 use App\Chat;
 use App\ChatParent;
 use App\Customer;
+use App\dreams;
 use App\Staff;
 use App\User;
 use Illuminate\Http\Request;
@@ -32,15 +33,50 @@ class HomeController extends Controller
     {
 //        $thirtyDays = date("Y-m-d", strtotime("+32 days"));
 //        $eventsList = Event::where('user_id', Auth::user()->id)->where('start', '<' ,$thirtyDays)->where('start', '>=' ,date("Y-m-d"))->get();
-        $totalChats = ChatParent::all()->count();
-        $totalStaff = Staff::all()->count();
-        $totalCustomers = Customer::all()->count();
-        $totalMessages = Chat::all()->count();
-        return view('home')->with(['totalMessages' => $totalMessages,'totalChats' => $totalChats,'totalStaff' => $totalStaff,'totalCustomers' => $totalCustomers]);
+        $totalDreams = dreams::where('user_id', Session::get('userId'))->count();
+        return view('home')->with(['totalDreams' => $totalDreams]);
     }
-    public function chat(){
-        $chats = ChatParent::all();
-        return view('chat')->with(['chats' => $chats]);
+
+    public function myDreams(){
+        $dreams = dreams::where('user_id', Session::get('userId'))->latest()->get();
+        return view('my-dreams')->with(['dreams' => $dreams]);
+    }
+
+    public function deleteDream($id){
+        $dreams = dreams::where('id', $id)->first()->delete();
+        return redirect('my-dreams');
+    }
+
+    public function addDream(){
+        return view('add-dream');
+    }
+
+    public function saveDream(Request $request){
+        $dream = new dreams();
+        $dream->dream = $request->dream;
+        $dream->user_id = Session::get('userId');
+        $dream->save();
+        return redirect('translate/' . $dream->id);
+    }
+    public function translate($id){
+        $dream = dreams::where('id', $id)->first();
+        return view('translate')->with(['dream' => $dream]);
+    }
+
+
+    public function myProfile(){
+        $user = User::where('id',Session::get('userId'))->first();
+        return view('my-profile')->with(['user' => $user]);
+    }
+
+    public function updateprofile(Request $request){
+        $user = User::where('id',Session::get('userId'))->first();
+        $user->name = $request->name;
+        if (!empty($request->password)){
+            $user->password = md5($request->password);
+        }
+        $user->update();
+        return redirect('my-profile');
     }
 
     public function chatDetails($id){

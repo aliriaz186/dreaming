@@ -74,7 +74,7 @@
         <nav id="sidebar" class="sidebar-wrapper">
             <div class="sidebar-content">
                 <div class="sidebar-brand">
-                    <a class="navbar-brand" href="{{ url('/') }}">Sms App</a>
+                    <a class="navbar-brand" href="{{ url('/') }}">Home</a>
                     <div id="close-sidebar">
                         <i class="fas fa-times"></i>
                     </div>
@@ -86,7 +86,7 @@
                              alt="User picture">
                     </div>
                     <div class="user-info">
-                            <h4 style="color: white">Welcome Admin!</h4>
+                            <h4 style="color: white">Welcome {{\App\User::where('id', \Illuminate\Support\Facades\Session::get('userId'))->first()['name'] ?? 'USER'}}</h4>
                     </div>
                 </div>
 
@@ -97,35 +97,27 @@
                             <span>General</span>
                         </li>
                         <li class="" style="border: 1px solid white;border-bottom: 0px">
-                            <a href="{{env('APP_URL')}}/home">
+                            <a href="{{url('')}}/home">
                                 <i class="fa fa-tachometer-alt"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                        @if(\Illuminate\Support\Facades\Session::get('isAdmin') === true)
                         <li class="" style="border: 1px solid white;border-bottom: 0px">
-                            <a href="{{env('APP_URL')}}/staff">
-                                <i class="fas fa-user"></i>
-                                <span>Staff</span>
-                            </a>
-                        </li>
-                        @endif
-                        <li class="" style="border: 1px solid white;border-bottom: 0px">
-                            <a href="{{env('APP_URL')}}/customer">
+                            <a href="{{url('')}}/my-dreams">
                                 <i class="fas fa-users"></i>
-                                <span>Customer</span>
+                                <span>My Dreams</span>
                             </a>
                         </li>
                         <li class="" style="border: 1px solid white;border-bottom: 0px">
-                            <a href="{{env('APP_URL')}}/chat" >
+                            <a href="{{url('')}}/my-profile" >
                                 <i class="fas fa-users"></i>
-                                <span>Chat <span style="color: white;font-size: 12px;background: red;padding: 2px 7px 2px 5px;border-radius: 10px;margin-left: 4px;" id="chat-count-dynamic"></span></span>
+                                <span>My Profile</span>
                             </a>
                         </li>
                         <li class="" style="border: 1px solid white;border-bottom: 0px">
                             <a href="{{env('APP_URL')}}/message-template">
-                                <i class="fas fa-envelope-open"></i>
-                                <span>Messages Templates</span>
+                                <i class="fas fa-users"></i>
+                                <span>My Payments</span>
                             </a>
                         </li>
                         <li class="" style="border: 1px solid white;">

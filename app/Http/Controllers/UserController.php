@@ -94,7 +94,7 @@ class UserController extends Controller
 
                 Session::put('userId', $user->id);
                 $dreamId = dreams::where('user_id', $user->id)->latest()->first()['id'];
-                return redirect('translation/' . $dreamId);
+                return redirect('translate/' . $dreamId);
 
 
             } else {
@@ -104,5 +104,19 @@ class UserController extends Controller
         } catch (\Exception $exception) {
             return redirect()->back()->withErrors($exception->getMessage());
         }
+    }
+
+    public function userpostlogin(Request $request){
+        if (User::where('email', $request->email)->where('password', md5($request->password))->exists()){
+            $user = User::where('email', $request->email)->where('password', md5($request->password))->first();
+            Session::put('userId', $user->id);
+            return redirect('home');
+        }else{
+            return redirect()->back()->withErrors("Invalid Credentials! Please try again!");
+        }
+    }
+
+    public function userLogin(){
+        return view('user-login');
     }
 }

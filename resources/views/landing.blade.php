@@ -77,10 +77,22 @@
             border: none;
             border-bottom: 1px solid lightgrey;
         }
+        .href-color{
+            color: white;
+            font-size: 18px;
+        }
+        .href-color:hover{
+            color: white!important;
+        }
 
     </style>
     <div class="first-bg">
         <h2 class="blue-color" style="position:fixed;">Your Dream is here</h2>
+        @if(\Illuminate\Support\Facades\Session::has('userId'))
+            <a class="href-color" href="{{url('home')}}" style="float: right;">Dashboard</a>
+        @else
+            <a class="href-color" href="{{url('user-login')}}" style="float: right;">Login</a>
+        @endif
         <div style="margin-top: 250px">
             <h1 class="blue-color" style="text-align: center">Dream Do Come True</h1>
             <h1 class="blue-color" style="text-align: center">From</h1>
@@ -220,7 +232,7 @@
     </div>
 
 
-    <div class="fourth-bg">
+    <div class="fourth-bg" id="translatedream">
 
         <div style="margin: 0 auto;max-width: 800px;margin-top: 200px;">
             <div>

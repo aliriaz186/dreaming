@@ -26,7 +26,19 @@ Route::get('/', "UserController@home");
 Route::post('send-email', "UserController@sendEmail");
 Route::post('open-payment', "UserController@openPayment");
 Route::get('complete-payment/{userId}', "UserController@completePaymentView");
+Route::get('user-login', "UserController@userLogin");
 Route::post('complete-registration', "UserController@completeRegistration");
+Route::post('userlogin', "UserController@userpostlogin");
+
+Route::get('/home', "HomeController@showDashboard")->middleware('dashboard');
+Route::get('/my-dreams', "HomeController@myDreams")->middleware('dashboard');
+Route::get('/delete-dream/{id}', "HomeController@deleteDream")->middleware('dashboard');
+Route::get('/add-dream', "HomeController@addDream")->middleware('dashboard');
+Route::get('/my-profile', "HomeController@myProfile")->middleware('dashboard');
+Route::get('/translate/{id}', "HomeController@translate")->middleware('dashboard');
+Route::post('/save-dream', "HomeController@saveDream")->middleware('dashboard');
+Route::post('/updateprofile', "HomeController@updateprofile")->middleware('dashboard');
+
 
 
 Route::get('/admin', "AdminController@loginPage")->middleware('checkAuth');
@@ -70,7 +82,6 @@ Route::get('logout-user', function (){
 //new work
 Route::post('login', "AdminController@login")->name('login');
 
-Route::get('/home', "HomeController@showDashboard")->middleware('dashboard');
 Route::get('/chat', "HomeController@chat")->middleware('dashboard');
 Route::get('/chat-details/{id}', "HomeController@chatDetails")->middleware('dashboard');
 Route::post('/send-sms/{parentId}', "HomeController@sendSMS");
