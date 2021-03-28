@@ -25,6 +25,8 @@ Auth::routes();
 Route::get('/', "UserController@home");
 Route::post('send-email', "UserController@sendEmail");
 Route::post('open-payment', "UserController@openPayment");
+Route::get('complete-payment/{userId}', "UserController@completePaymentView");
+Route::post('complete-registration', "UserController@completeRegistration");
 
 
 Route::get('/admin', "AdminController@loginPage")->middleware('checkAuth');

@@ -228,7 +228,7 @@
                 <h3 style="text-align: center;" class="blue-color">BELOW</h3>
                 <form method="post" action="{{url('/open-payment')}}">
                     @csrf
-                    <textarea class="form-control" style="height: 400px;margin-top: 20px;margin-bottom: 20px;padding: 15px" placeholder="Write your dream here.."></textarea>
+                    <textarea class="form-control" style="height: 400px;margin-top: 20px;margin-bottom: 20px;padding: 15px" name="dream" placeholder="Write your dream here.." required></textarea>
                     <div style="margin: 0 auto;max-width: 200px">
                         <button style="padding: 20px;border: 1px solid #39c0de;background: #0d1c9a" class="blue-color">Translate Your Dream</button>
                     </div>
@@ -248,20 +248,20 @@
                     <h3 style="text-align: center;" class="blue-color">CONTACT</h3>
                     <div class="row" style="margin-top: 30px">
                         <div class="col-md-6">
-                            <input type="text" class="form-control myinput" name="name" placeholder="Name" required>
+                            <input style=";color: white" type="text" class="form-control myinput" name="name" placeholder="Name" required>
                         </div>
                         <div class="col-md-6">
-                            <input type="email" class="form-control myinput" name="email" placeholder="Email" required>
+                            <input style=";color: white" type="email" class="form-control myinput" name="email" placeholder="Email" required>
                         </div>
                     </div>
                     <div class="row" style="margin-top: 30px">
                         <div class="col-md-12">
-                            <input type="text" class="form-control myinput" placeholder="Subject" name="subject" required>
+                            <input style=";color: white" type="text" class="form-control myinput" placeholder="Subject" name="subject" required>
                         </div>
                     </div>
                     <div class="row" style="margin-top: 30px">
                         <div class="col-md-12">
-                            <textarea class="form-control myinput" style="height: 200px;margin-top: 20px;margin-bottom: 20px;padding: 15px" placeholder="Message" name="message" required></textarea>
+                            <textarea class="form-control myinput" style="height: 200px;margin-top: 20px;margin-bottom: 20px;padding: 15px;color: white" placeholder="Message" name="message" required></textarea>
                         </div>
                     </div>
                     <div style="margin: 0 auto;max-width: 200px">

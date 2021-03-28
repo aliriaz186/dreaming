@@ -1,9 +1,11 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\dreams;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -31,7 +33,76 @@ class UserController extends Controller
         mail("me.aliriaz007@gmail.com",$request->subject,$msg, $headers);
     }
 
-    public function openPayment(){
+    public function openPayment(Request $request){
+        $dream = $request->dream;
+        $dreamTable = new dreams();
+        $dreamTable->user_id = md5(rand(0,5000));
+        $dreamTable->dream = $dream;
+        $dreamTable->save();
+        return redirect('complete-payment/' . $dreamTable->user_id);
+    }
 
+    public function completePaymentView($userId){
+        return view('complete-payment')->with(['userId' => $userId]);
+    }
+
+    public function completeRegistration(Request $request){
+        try {
+            if (User::where('email',$request->email)->exists()){
+                return redirect()->back()->withErrors("Email Already Exists!");
+            }
+            $stripe = \Cartalyst\Stripe\Laravel\Facades\Stripe::setApiKey(env('STRIPE_SECRET'));
+            $token = $stripe->tokens()->create([
+                'card' => [
+                    'number' => $request->cardNumber,
+                    'exp_month' => $request->month,
+                    'exp_year' => $request->year,
+                    'cvc' => $request->cvv,
+                ],
+            ]);
+
+            if (!isset($token['id'])) {
+                return redirect()->back()->withErrors("Token Id does not Exists! Please try again!");
+            }
+
+
+
+            $charge = $stripe->charges()->create([
+                'card' => $token['id'],
+                'currency' => 'USD',
+                'amount' => 10,
+                'description' => 'wallet',
+            ]);
+
+            if ($charge['status'] == 'succeeded') {
+                $user = new User();
+                $user->name = $request->name;
+                $user->email = $request->email;
+                $user->password = md5($request->password);
+                $user->card = ($request->cardNumber);
+                $user->exp_year = ($request->year);
+                $user->exp_month = ($request->month);
+                $user->cvv = ($request->cvv);
+                $user->last_payment = date('Y-m-d');
+                $user->save();
+
+                if (dreams::where('user_id', $request->userId)->exists()){
+                    $dream = dreams::where('user_id', $request->userId)->first();
+                    $dream->user_id = $user->id;
+                    $dream->update();
+                }
+
+                Session::put('userId', $user->id);
+                $dreamId = dreams::where('user_id', $user->id)->latest()->first()['id'];
+                return redirect('translation/' . $dreamId);
+
+
+            } else {
+                return redirect()->back()->withErrors("Payment unsuccessfull! Please try again!");
+
+            }
+        } catch (\Exception $exception) {
+            return redirect()->back()->withErrors($exception->getMessage());
+        }
     }
 }
