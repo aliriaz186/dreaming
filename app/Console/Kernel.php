@@ -30,7 +30,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('notification:users')
             ->everyMinute();
         $schedule->command('auto:payment')
-            ->everyFiveMinutes();
+            ->daily();
     }
 
     /**
