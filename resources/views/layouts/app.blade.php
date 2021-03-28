@@ -115,7 +115,7 @@
                             </a>
                         </li>
                         <li class="" style="border: 1px solid white;border-bottom: 0px">
-                            <a href="{{env('APP_URL')}}/message-template">
+                            <a href="{{env('APP_URL')}}/my-payments">
                                 <i class="fas fa-users"></i>
                                 <span>My Payments</span>
                             </a>

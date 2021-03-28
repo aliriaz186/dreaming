@@ -15,6 +15,16 @@
     </div>
 
     <div class="px-5"  style="margin-left: 20px">
+        @if($errors->any())
+            <div class="alert alert-danger">
+                <h4 style="color: black;font-size: 14px">{{$errors->first()}}</h4>
+            </div>
+        @endif
+        @if(\Illuminate\Support\Facades\Session::has('msg'))
+            <div class="alert alert-success" style="margin-bottom: 0px!important;">
+                <h4 style="color: black">{{\Illuminate\Support\Facades\Session::get("msg")}}</h4>
+            </div>
+        @endif
         <table class="table" id="customer-table">
             <thead style="background: #05728f;color: white">
             <tr>

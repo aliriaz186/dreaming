@@ -43,12 +43,22 @@ class HomeController extends Controller
     }
 
     public function deleteDream($id){
-        $dreams = dreams::where('id', $id)->first()->delete();
-        return redirect('my-dreams');
+        try {
+            $dreams = dreams::where('id', $id)->first()->delete();
+            session()->flash('msg', 'Dream deleted Successfully!');
+            return redirect('my-dreams');
+        }catch (\Exception $exception){
+            return redirect()->back()->withErrors($exception->getMessage());
+        }
+
     }
 
     public function addDream(){
         return view('add-dream');
+    }
+
+    public function myPayments(){
+        return view('my-payments');
     }
 
     public function saveDream(Request $request){
@@ -70,13 +80,19 @@ class HomeController extends Controller
     }
 
     public function updateprofile(Request $request){
-        $user = User::where('id',Session::get('userId'))->first();
-        $user->name = $request->name;
-        if (!empty($request->password)){
-            $user->password = md5($request->password);
+        try {
+            $user = User::where('id',Session::get('userId'))->first();
+            $user->name = $request->name;
+            if (!empty($request->password)){
+                $user->password = md5($request->password);
+            }
+            $user->update();
+            session()->flash('msg', 'Profile Updated Successfully!');
+            return redirect('my-profile');
+        }catch (\Exception $exception){
+            return redirect()->back()->withErrors($exception->getMessage());
         }
-        $user->update();
-        return redirect('my-profile');
+
     }
 
     public function chatDetails($id){
