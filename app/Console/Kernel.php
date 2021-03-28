@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\AutoPayment;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -14,6 +15,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         'App\Console\Commands\DesktopNotification',
+        AutoPayment::class
     ];
 
     /**
@@ -26,6 +28,8 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->command('notification:users')
+            ->everyMinute();
+        $schedule->command('auto:payment')
             ->everyMinute();
     }
 

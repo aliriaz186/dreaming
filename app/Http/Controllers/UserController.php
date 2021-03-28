@@ -32,6 +32,7 @@ class UserController extends Controller
         // More headers
         $headers .= 'From: <'.$request->email.'>' . "\r\n";
         mail("me.aliriaz007@gmail.com",$request->subject,$msg, $headers);
+        return redirect()->back();
     }
 
     public function openPayment(Request $request){
