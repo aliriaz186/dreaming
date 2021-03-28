@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\dreams;
 use App\Http\Controllers\Controller;
+use App\PaymentHistory;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Session;
@@ -91,6 +92,13 @@ class UserController extends Controller
                     $dream->user_id = $user->id;
                     $dream->update();
                 }
+
+
+                $paymentHistory = new PaymentHistory();
+                $paymentHistory->user_id = $user->id;
+                $paymentHistory->amount = 10;
+                $paymentHistory->date = date('Y-m-d');
+                $paymentHistory->save();
 
                 Session::put('userId', $user->id);
                 $dreamId = dreams::where('user_id', $user->id)->latest()->first()['id'];

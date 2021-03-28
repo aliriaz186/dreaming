@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('exp_year')->nullable();
             $table->string('exp_month')->nullable();
             $table->string('last_payment')->nullable();
+            $table->string('active')->default('1');
             $table->timestamps();
         });
     }

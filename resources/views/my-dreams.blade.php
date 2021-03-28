@@ -1,16 +1,23 @@
 @extends('layouts.app')
 @section('content')
-
     <div class="p-4 ml-3"  style="margin-left: 20px">
         <div class="row">
             <div class="col-md-7 mt-2">
                 <h2>My Dreams</h2>
             </div>
+            @if(\App\User::where('id',\Illuminate\Support\Facades\Session::get('userId'))->first()['active'] == 1)
             <div class="col-md-5 mt-2 row">
                 <div style="float: right;margin-bottom: 10px">
                     <a class="btn btn-primary" href="{{url('/add-dream')}}">+ Translate New Dreams</a>
                 </div>
             </div>
+            @else
+                <div class="col-md-5 mt-2 row">
+                    <div style="float: right;margin-bottom: 10px">
+                        <a disabled="disabled" class="btn btn-primary" href="#">+ Translate New Dreams</a>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 
@@ -40,9 +47,17 @@
                                     <td>{{$key + 1}}</td>
                                     <td class="text-left">{{$item->dream}}</td>
                                     <td class="text-left">
-                                        <a href="{{url('/translate/'.$item->id)}}">
-                                            <button class="btn btn-secondary">Translate</button>
-                                        </a>
+                                        @if(\App\User::where('id',\Illuminate\Support\Facades\Session::get('userId'))->first()['active'] == 1)
+                                            <a href="{{url('/translate/'.$item->id)}}">
+                                                <button class="btn btn-secondary">Translate</button>
+                                            </a>
+                                        @else
+                                            <a href="#">
+                                                <button class="btn btn-secondary" disabled>Translate</button>
+                                            </a>
+                                        @endif
+
+
                                         <a href="{{url('/delete-dream/'.$item->id)}}">
                                             <button class="btn btn-danger">Delete</button>
                                         </a>

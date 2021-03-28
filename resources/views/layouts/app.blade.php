@@ -23,6 +23,7 @@
     <script type="text/javascript" src="{{ \Illuminate\Support\Facades\URL::asset('popper/popper.min.js')}}"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 {{--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>--}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         .ajax-loader {
             visibility: hidden;
@@ -37,6 +38,13 @@
             position: relative;
             top:50%;
             left:50%;
+        }
+
+        .btn-disabled,
+        .btn-disabled[disabled] {
+            opacity: .4;
+            cursor: default !important;
+            pointer-events: none;
         }
     </style>
 </head>
@@ -98,13 +106,13 @@
                         </li>
                         <li class="" style="border: 1px solid white;border-bottom: 0px">
                             <a href="{{url('')}}/home">
-                                <i class="fa fa-tachometer-alt"></i>
+                                <i class="fa fa-chart-line"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
                         <li class="" style="border: 1px solid white;border-bottom: 0px">
                             <a href="{{url('')}}/my-dreams">
-                                <i class="fas fa-users"></i>
+                                <i class="fa fa-bed"></i>
                                 <span>My Dreams</span>
                             </a>
                         </li>
@@ -115,9 +123,15 @@
                             </a>
                         </li>
                         <li class="" style="border: 1px solid white;border-bottom: 0px">
+                            <a href="{{url('')}}/payment-method" >
+                                <i class="fa fa-cc-visa"></i>
+                                <span>Payment Method</span>
+                            </a>
+                        </li>
+                        <li class="" style="border: 1px solid white;border-bottom: 0px">
                             <a href="{{env('APP_URL')}}/my-payments">
-                                <i class="fas fa-users"></i>
-                                <span>My Payments</span>
+                                <i class="fa fa-user"></i>
+                                <span>Payments & Subscription</span>
                             </a>
                         </li>
                         <li class="" style="border: 1px solid white;">
@@ -163,31 +177,31 @@
     }
 
     $(document).ready(function(){
-        if (!Notification) {
-            alert('Desktop notifications not available in your browser. Try Chromium.');
-            return;
-        }
+        // if (!Notification) {
+        //     alert('Desktop notifications not available in your browser. Try Chromium.');
+        //     return;
+        // }
+        //
+        // if (Notification.permission !== 'granted'){
+        //     Notification.requestPermission();
+        // }
 
-        if (Notification.permission !== 'granted'){
-            Notification.requestPermission();
-        }
-
-        getCountsFunction();
+        // getCountsFunction();
 
     });
 
-    function getCountsFunction(){
-        $.get(`{{url('get-chat-ping-count')}}`, function(data, status){
-            let result = JSON.parse(data);
-            document.getElementById('chat-count-dynamic').innerText = result.count;
-            if(result.pingCount > 0){
-                notification_send(result.pingCount);
-            }
-        });
-        setTimeout(function () {
-            getCountsFunction();
-        }, 60000)
-    }
+    {{--function getCountsFunction(){--}}
+    {{--    $.get(`{{url('get-chat-ping-count')}}`, function(data, status){--}}
+    {{--        let result = JSON.parse(data);--}}
+    {{--        document.getElementById('chat-count-dynamic').innerText = result.count;--}}
+    {{--        if(result.pingCount > 0){--}}
+    {{--            notification_send(result.pingCount);--}}
+    {{--        }--}}
+    {{--    });--}}
+    {{--    setTimeout(function () {--}}
+    {{--        getCountsFunction();--}}
+    {{--    }, 60000)--}}
+    {{--}--}}
 
     jQuery(function ($) {
 

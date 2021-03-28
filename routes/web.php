@@ -35,17 +35,26 @@ Route::get('/my-dreams', "HomeController@myDreams")->middleware('dashboard');
 Route::get('/delete-dream/{id}', "HomeController@deleteDream")->middleware('dashboard');
 Route::get('/add-dream', "HomeController@addDream")->middleware('dashboard');
 Route::get('/my-profile', "HomeController@myProfile")->middleware('dashboard');
+Route::get('/payment-method', "HomeController@paymentMethod")->middleware('dashboard');
 Route::get('/my-payments', "HomeController@myPayments")->middleware('dashboard');
 Route::get('/translate/{id}', "HomeController@translate")->middleware('dashboard');
 Route::get('/my-payments', "HomeController@myPayments")->middleware('dashboard');
+Route::get('/end-subscription/{id}', "HomeController@endSubscription")->middleware('dashboard');
+Route::get('/activate-subscription/{id}', "HomeController@activateSubscription")->middleware('dashboard');
 Route::post('/save-dream', "HomeController@saveDream")->middleware('dashboard');
 Route::post('/updateprofile', "HomeController@updateprofile")->middleware('dashboard');
+Route::post('/updatecarddetails', "HomeController@updatecarddetails")->middleware('dashboard');
 
 Route::get('logout-user', function (){
     \Illuminate\Support\Facades\Session::flush();
     \Illuminate\Support\Facades\Auth::logout();
     return redirect('/');
 })->name('logout-user');
+
+Route::get('import', function (){
+    return view('import');
+});
+Route::post('/import_excel/import', 'HomeController@import');
 
 
 //Route::get('/admin', "AdminController@loginPage")->middleware('checkAuth');
@@ -122,6 +131,5 @@ Route::get('logout-user', function (){
 //Route::post('customers/all', "CustomerController@getAll");
 //Route::post('chats/all', "CustomerController@getAllChats");
 //
-//Route::post('/import_excel/import', 'ImportExcelController@import');
 //Route::get('icoming-sms', 'HomeController@icomingSms');
 

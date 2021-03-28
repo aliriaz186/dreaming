@@ -4,7 +4,7 @@
     <div class="p-4 ml-3"  style="margin-left: 20px">
         <div class="row">
             <div class="col-md-7 mt-2">
-                <h2>My Dream</h2>
+                <h2>My Profile</h2>
             </div>
         </div>
     </div>

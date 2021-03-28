@@ -15,10 +15,6 @@ class CSVModal implements ToCollection
             if (!empty($row[0])){
                 array_push($this->data, [
                     "name" => $row[0],
-                    "number" => $row[1],
-//                    "time" => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[1]),
-//                    "invoice_no" => $row[2],
-//                    "amount" => $row[3]
                 ]);
             }
         }
