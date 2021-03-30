@@ -134,6 +134,12 @@
                                 <span>Payments & Subscription</span>
                             </a>
                         </li>
+                        <li class="" style="border: 1px solid white;border-bottom: 0px">
+                            <a href="{{env('APP_URL')}}/contact-users">
+                                <i class="fa fa-inbox"></i>
+                                <span>Contact Users</span>
+                            </a>
+                        </li>
                         <li class="" style="border: 1px solid white;">
                             <a href="{{ route('logout-user') }}">
                                 <i class="fas fa-user"></i>

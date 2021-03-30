@@ -41,9 +41,14 @@ Route::get('/translate/{id}', "HomeController@translate")->middleware('dashboard
 Route::get('/my-payments', "HomeController@myPayments")->middleware('dashboard');
 Route::get('/end-subscription/{id}', "HomeController@endSubscription")->middleware('dashboard');
 Route::get('/activate-subscription/{id}', "HomeController@activateSubscription")->middleware('dashboard');
+Route::get('/contact-users', "HomeController@contactUsers")->middleware('dashboard');
+Route::get('/open-chat/{userId}', "HomeController@openChat")->middleware('dashboard');
 Route::post('/save-dream', "HomeController@saveDream")->middleware('dashboard');
 Route::post('/updateprofile', "HomeController@updateprofile")->middleware('dashboard');
 Route::post('/updatecarddetails', "HomeController@updatecarddetails")->middleware('dashboard');
+
+
+Route::get('/unsubscribe/{token}', "HomeController@unsubscribe");
 
 Route::get('logout-user', function (){
     \Illuminate\Support\Facades\Session::flush();

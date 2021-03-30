@@ -45,7 +45,7 @@ class AutoPayment extends Command
         foreach ($users as $user){
             $time = strtotime($user->last_payment);
             $final = date("Y-m-d", strtotime("+1 month", $time));
-           if( date('Y-m-d') >= $final){
+           if( date('Y-m-d') >= $final && $user->active != 0){
 
                try {
                    $stripe = \Cartalyst\Stripe\Laravel\Facades\Stripe::setApiKey(env('STRIPE_SECRET'));

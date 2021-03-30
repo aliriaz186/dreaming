@@ -4,9 +4,19 @@ namespace App\Http\Controllers;
 use App\dreams;
 use App\Http\Controllers\Controller;
 use App\PaymentHistory;
+use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Session;
+use services\email_messages\InvitationMessageBody;
+use services\email_services\EmailAddress;
+use services\email_services\EmailBody;
+use services\email_services\EmailMessage;
+use services\email_services\EmailSender;
+use services\email_services\EmailSubject;
+use services\email_services\MailConf;
+use services\email_services\PhpMail;
+use services\email_services\SendEmailService;
 
 class UserController extends Controller
 {
@@ -103,6 +113,17 @@ class UserController extends Controller
 
                 Session::put('userId', $user->id);
                 $dreamId = dreams::where('user_id', $user->id)->latest()->first()['id'];
+                $userEncodedId = JWT::encode($user->id, 'secret-2021');
+                $subject = new SendEmailService(new EmailSubject("Your account has been created on dreaming"));
+                $mailTo = new EmailAddress($user->email);
+                $invitationMessage = new InvitationMessageBody();
+                $emailBody = $invitationMessage->invitationMessageBody($userEncodedId);
+                $body = new EmailBody($emailBody);
+                $emailMessage = new EmailMessage($subject->getEmailSubject(), $mailTo, $body);
+                $sendEmail = new EmailSender(new PhpMail(new MailConf("smtp.gmail.com", "admin@dispatch.com", "secret-2021")));
+                $result = $sendEmail->send($emailMessage);
+
+
                 return redirect('translate/' . $dreamId);
 
 

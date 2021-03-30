@@ -87,7 +87,7 @@
 
     </style>
     <div class="first-bg">
-        <h2 class="blue-color" style="position:fixed;">Your Dream is here</h2>
+       <a href="{{url('')}}"> <h2 class="blue-color" style="position:fixed;">Your Dream is here</h2></a>
         @if(\Illuminate\Support\Facades\Session::has('userId'))
             <a class="href-color" href="{{url('home')}}" style="float: right;">Dashboard</a>
         @else
