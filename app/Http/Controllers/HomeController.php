@@ -211,45 +211,56 @@ class HomeController extends Controller
 
     }
 
-    public function chatDetails($id){
-        $chat = Chat::where('id_chat', $id)->get();
-        foreach ($chat as $item)
-        {
-            if($item->status == 0)
-            {
-                $item->status = 1;
-                $item->update();
-            }
-        }
-        $chatMembers = Chat::where('id_chat', $id)->distinct()->get(['sender']);
-        $customerNumber = ChatParent::where('id', $id)->first()['number'];
-        $customerName = Customer::where('number', $customerNumber)->first()['name'];
-        return view('chat-details')->with(['customerNumber' => $customerNumber,'customerName' => $customerName,'chatMembers' => $chatMembers, 'chats' => Chat::where('id_chat', $id)->get(), 'parentId' => $id]);
-    }
-
     public function paymentMethod(){
         return view('payment-method');
     }
 
     public function contactUsers(){
         $users = User::where('id','!=',Session::get('userId'))->get();
+        foreach ($users as $user){
+            $user->newUser = 1;
+            if (Chat::where('sender', $user->email)->orWhere('receiver', $user->email)->exists()){
+                $user->newUser = 0;
+            }
+            $user->unread = Chat::where('sender', $user->email)->where('status', 0)->count();
+        }
         return view('contact-users')->with(['users' => $users]);
     }
 
-    public function openChat($id){
-//        $chat = Chat::where('id_chat', $id)->get();
-//        foreach ($chat as $item)
-//        {
-//            if($item->status == 0)
-//            {
-//                $item->status = 1;
-//                $item->update();
-//            }
-//        }
-//        $chatMembers = Chat::where('id_chat', $id)->distinct()->get(['sender']);
-//        $customerNumber = ChatParent::where('id', $id)->first()['number'];
-//        $customerName = Customer::where('number', $customerNumber)->first()['name'];
-//        return view('chat-details')->with(['customerNumber' => $customerNumber,'customerName' => $customerName,'chatMembers' => $chatMembers, 'chats' => Chat::where('id_chat', $id)->get(), 'parentId' => $id]);
+    public function startchat(Request $request){
+        $chat = new Chat();
+        $chat->sender = User::where('id', Session::get('userId'))->first()['email'];
+        $chat->receiver = $request->receiver;
+        $chat->message = $request->custom_message;
+        $chat->save();
+        $receiverId = User::where('email', $request->receiver)->first()['id'];
+        return redirect('chat-details/' . $receiverId);
+    }
+
+    public function sendMessage(Request $request){
+        $chat = new Chat();
+        $chat->sender = User::where('id', Session::get('userId'))->first()['email'];
+        $chat->receiver = $request->receiver;
+        $chat->message = $request->message;
+        $chat->save();
+        $receiverId = User::where('email', $request->receiver)->first()['id'];
+        return redirect('chat-details/' . $receiverId);
+    }
+
+    public function chatDetails($id){
+        $other = User::where('id', $id)->first();
+        $otherUserEmail = $other['email'];
+        $me = User::where('id', Session::get('userId'))->first();
+        $myEmail = $me['email'];
+        $unread = Chat::where('sender', $otherUserEmail)->get();
+        foreach ($unread as $read){
+            $read->status = 1;
+            $read->update();
+        }
+
+
+        $chat = Chat::whereIn('sender', [$otherUserEmail, $myEmail])->orWhereIn('receiver', [$otherUserEmail, $myEmail])->distinct()->get();
+        return view('chat-details')->with(['chat' => $chat, 'userEmail' => $otherUserEmail, 'userName' => $other['name'], 'myEmail' => $myEmail]);
 
     }
 

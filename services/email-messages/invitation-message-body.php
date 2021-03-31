@@ -4,14 +4,14 @@ namespace services\email_messages;
 
 class InvitationMessageBody
 {
-    public function invitationMessageBody()
+    public function invitationMessageBody($id)
     {
         $emailBody = '
    <body>
-             <div style="margin-left: 50px;font-size: 25px;padding-top: 40px">Welcome to nincati!</div><br>
-             <div style="margin-left: 50px;font-size: 25px;padding-top: 40px">Please Login to start uploading your own content!</div><br>
+             <div style="margin-left: 50px;font-size: 25px;padding-top: 40px">Welcome to Dreaming!</div><br>
+             <div style="margin-left: 50px;font-size: 25px;padding-top: 40px">Thankyou for your subscripton. You can translate unlimited dreams now! You can unsubscribe anytime by clicking the below button</div><br>
  <div style="padding-top: 30px;padding-bottom: 40px">
- <a href="'. url(''). '/user-login" style=" background-color: #1AAA55;
+ <a href="'. url('unsubscribe'). '/'.$id.'" style=" background-color: maroon;
   border: none;
   color: white;
   padding: 10px 27px;
@@ -20,7 +20,7 @@ class InvitationMessageBody
   display: inline-block;
   font-size: 18px;
   cursor: pointer;
-  border-radius: 3px;margin-left: 50px">Login</a>
+  border-radius: 3px;margin-left: 50px">UNSUBSCRIBE</a>
   </div>
             </body>
             ';
