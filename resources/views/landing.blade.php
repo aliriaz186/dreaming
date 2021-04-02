@@ -84,7 +84,20 @@
         .href-color:hover{
             color: white!important;
         }
-
+        .circle {
+            /*margin: 0 auto;*/
+            /*max-width: 500px;*/
+            /*width: 500px;*/
+            /*height: 500px;*/
+            /*margin-top: -200px;*/
+            /*!*line-height: 500px;*!*/
+            /*border-radius: 50%;*/
+            /*!*font-size: 50px;*!*/
+            /*color: #fff;*/
+            /*text-align: center;*/
+            /*background: transparent;*/
+            /*border: 2px solid white;*/
+        }
     </style>
     <div class="first-bg">
        <a href="{{url('')}}"> <h2 class="blue-color" style="position:fixed;">Your Dream is here</h2></a>
@@ -93,7 +106,7 @@
         @else
             <a class="href-color" href="{{url('user-login')}}" style="float: right;">Login</a>
         @endif
-        <div style="margin-top: 250px">
+        <div style="margin-top: 250px" class="circle">
             <h1 class="blue-color" style="text-align: center">Dream Do Come True</h1>
             <h1 class="blue-color" style="text-align: center">From</h1>
             <h1 class="blue-color" style="text-align: center">Your Dreams</h1>

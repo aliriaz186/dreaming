@@ -68,8 +68,8 @@ class AutoPayment extends Command
 
                    $charge = $stripe->charges()->create([
                        'card' => $token['id'],
-                       'currency' => 'USD',
-                       'amount' => 10,
+                       'currency' => 'GBP',
+                       'amount' => 1.99,
                        'description' => 'wallet',
                    ]);
 
@@ -80,7 +80,7 @@ class AutoPayment extends Command
 
                        $paymentHistory = new PaymentHistory();
                        $paymentHistory->user_id = $user->id;
-                       $paymentHistory->amount = 10;
+                       $paymentHistory->amount = 1.99;
                        $paymentHistory->date = date('Y-m-d');
                        $paymentHistory->save();
 

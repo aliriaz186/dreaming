@@ -154,7 +154,7 @@
                         </div>
                     </div>
                     <div style="margin: 0 auto;max-width: 200px;margin-top: 35px">
-                        <button type="submit" style="padding: 20px;border: 1px solid #39c0de;background: #0d1c9a;font-weight: bold" class="blue-color">Pay (10 USD) monthly fee and get Registered</button>
+                        <button type="submit" style="padding: 20px;border: 1px solid #39c0de;background: #0d1c9a;font-weight: bold" class="blue-color">Pay (1.99 GBP) monthly fee and get Registered</button>
                         <br>
                         <br>
                         <span style="color: lightgrey">Already a member?</span><a href="{{url('user-login')}}" style="color: white"> Login here!</a>
