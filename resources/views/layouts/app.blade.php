@@ -88,11 +88,7 @@
                     </div>
                 </div>
                 <div class="sidebar-header">
-                    <div class="user-pic">
-                        <img class="img-responsive img-rounded"
-                             src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
-                             alt="User picture">
-                    </div>
+
                     <div class="user-info">
                             <h4 style="color: white">Welcome {{\App\User::where('id', \Illuminate\Support\Facades\Session::get('userId'))->first()['name'] ?? 'USER'}}</h4>
                     </div>
@@ -104,45 +100,51 @@
                         <li class="header-menu">
                             <span>General</span>
                         </li>
-                        <li class="" style="border: 1px solid white;border-bottom: 0px">
+                        <li class="" style="border: 1px solid white;border-bottom: 0px;padding: 5px;font-size: 15px">
                             <a href="{{url('')}}/home">
-                                <i class="fa fa-chart-line"></i>
+{{--                                <i class="fa fa-chart-line"></i>--}}
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                        <li class="" style="border: 1px solid white;border-bottom: 0px">
+                        <li class="" style="border: 1px solid white;border-bottom: 0px;padding: 5px;font-size: 15px">
+                            <a href="{{url('/add-dream')}}">
+{{--                                <i class="fa fa-bed"></i>--}}
+                                <span>Translate New Dream</span>
+                            </a>
+                        </li>
+                        <li class="" style="border: 1px solid white;border-bottom: 0px;padding: 5px;font-size: 15px">
                             <a href="{{url('')}}/my-dreams">
-                                <i class="fa fa-bed"></i>
+{{--                                <i class="fa fa-bed"></i>--}}
                                 <span>My Dreams</span>
                             </a>
                         </li>
-                        <li class="" style="border: 1px solid white;border-bottom: 0px">
+                        <li class="" style="border: 1px solid white;border-bottom: 0px;padding: 5px;font-size: 15px">
                             <a href="{{url('')}}/my-profile" >
-                                <i class="fas fa-users"></i>
+{{--                                <i class="fas fa-users"></i>--}}
                                 <span>My Profile</span>
                             </a>
                         </li>
-                        <li class="" style="border: 1px solid white;border-bottom: 0px">
+                        <li class="" style="border: 1px solid white;border-bottom: 0px;padding: 5px;font-size: 15px">
                             <a href="{{url('')}}/payment-method" >
-                                <i class="fa fa-cc-visa"></i>
+{{--                                <i class="fa fa-cc-visa"></i>--}}
                                 <span>Payment Method</span>
                             </a>
                         </li>
-                        <li class="" style="border: 1px solid white;border-bottom: 0px">
-                            <a href="{{env('APP_URL')}}/my-payments">
-                                <i class="fa fa-user"></i>
+                        <li class="" style="border: 1px solid white;border-bottom: 0px;padding: 5px;font-size: 15px">
+                            <a href="{{url('')}}/my-payments">
+{{--                                <i class="fa fa-user"></i>--}}
                                 <span>Payments & Subscription</span>
                             </a>
                         </li>
-                        <li class="" style="border: 1px solid white;border-bottom: 0px">
-                            <a href="{{env('APP_URL')}}/contact-users">
-                                <i class="fa fa-inbox"></i>
-                                <span>Contact Users</span>
+                        <li class="" style="border: 1px solid white;border-bottom: 0px;padding: 5px;font-size: 15px">
+                            <a href="{{url('')}}/chat-details">
+{{--                                <i class="fa fa-inbox"></i>--}}
+                                <span>CHAT ROOM</span>
                             </a>
                         </li>
-                        <li class="" style="border: 1px solid white;">
+                        <li class="" style="border: 1px solid white;;padding: 5px;font-size: 15px">
                             <a href="{{ route('logout-user') }}">
-                                <i class="fas fa-user"></i>
+{{--                                <i class="fas fa-user"></i>--}}
                                 <span>Logout</span>
                             </a>
                         </li>

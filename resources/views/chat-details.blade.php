@@ -228,15 +228,13 @@
                 <div class="inbox_people">
                     <div class="headind_srch">
                         <div class="recent_heading">
-                            <h4 style="color: black">Messaging</h4>
+                            <h4 style="color: black">Chat Room</h4>
                         </div>
 
                     </div>
                     <div class="inbox_chat">
-                        <h4 style="text-align: center;margin-top: 30px">User Name:
-                            <span style="font-weight: bold">{{$userName}}</span></h4>
-                        <h4 style="text-align: center;margin-top: 30px">User Email:
-                            <span style="font-weight: bold">{{$userEmail}}</span></h4>
+                        <h4 style="text-align: center;margin-top: 30px">
+                            <span style="font-weight: bold">{{$myEmail}}</span></h4>
                     </div>
                 </div>
                 <div class="mesgs">
@@ -260,7 +258,7 @@
                                     <div class="received_msg">
                                         <div class="received_withd_msg">
                                             <p><span
-                                                    style="text-decoration: underline"> {{$userEmail}}</span><br>{{$chat->message}}
+                                                    style="text-decoration: underline"> {{$chat->sender}}</span><br>{{$chat->message}}
                                             </p>
                                             <span
                                                 class="time_date"> {{$chat->created_at}}    | <?php echo \Carbon\Carbon::createFromTimeStamp(strtotime($chat->created_at))->diffForHumans() ?>
@@ -277,7 +275,7 @@
                                 @csrf
                                 <input type="text" name="message" class="write_msg" placeholder="Type a message"
                                        style="border-bottom: 1px solid lightgrey" required/>
-                                <input type="hidden" value="{{$userEmail}}" name="receiver">
+                                <input type="hidden" value="None" name="receiver">
                                 <button class="btn btn-success" type="submit"
                                         style="margin-top: 10px;margin-bottom: 10px">Send
                                 </button>

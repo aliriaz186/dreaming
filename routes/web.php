@@ -48,7 +48,7 @@ Route::post('/updateprofile', "HomeController@updateprofile")->middleware('dashb
 Route::post('/updatecarddetails', "HomeController@updatecarddetails")->middleware('dashboard');
 Route::post('/startchat', "HomeController@startchat")->middleware('dashboard');
 Route::post('/send-message', "HomeController@sendMessage")->middleware('dashboard');
-Route::get('/chat-details/{id}', "HomeController@chatDetails")->middleware('dashboard');
+Route::get('/chat-details/', "HomeController@chatDetails")->middleware('dashboard');
 
 
 Route::get('/unsubscribe/{token}', "HomeController@unsubscribe");

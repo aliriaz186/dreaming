@@ -114,7 +114,7 @@ class UserController extends Controller
                 Session::put('userId', $user->id);
                 $dreamId = dreams::where('user_id', $user->id)->latest()->first()['id'];
                 $userEncodedId = JWT::encode($user->id, 'secret-2021');
-                $subject = new SendEmailService(new EmailSubject("Your account has been created on dreaming"));
+                $subject = new SendEmailService(new EmailSubject("Your account has been created on Dreaming123 Community"));
                 $mailTo = new EmailAddress($user->email);
                 $invitationMessage = new InvitationMessageBody();
                 $emailBody = $invitationMessage->invitationMessageBody($userEncodedId);

@@ -8,13 +8,13 @@
             @if(\App\User::where('id',\Illuminate\Support\Facades\Session::get('userId'))->first()['active'] == 1)
             <div class="col-md-5 mt-2 row">
                 <div style="float: right;margin-bottom: 10px">
-                    <a class="btn btn-primary" href="{{url('/add-dream')}}">+ Translate New Dreams</a>
+                    <a class="btn btn-success" style="font-size: 18px" href="{{url('/add-dream')}}">Translate New Dream or Word.</a>
                 </div>
             </div>
             @else
                 <div class="col-md-5 mt-2 row">
                     <div style="float: right;margin-bottom: 10px">
-                        <a disabled="disabled" class="btn btn-primary" href="#">+ Translate New Dreams</a>
+                        <a disabled="disabled" class="btn btn-primary" style="font-size: 18px" href="#">Translate New Dream or Word.</a>
                     </div>
                 </div>
             @endif

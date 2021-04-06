@@ -46,7 +46,7 @@
         }
 
         .grey-color {
-            color: grey;
+            color: #D3D3D3;
         }
 
         .font-size-small {
@@ -98,18 +98,139 @@
             /*background: transparent;*/
             /*border: 2px solid white;*/
         }
+        .fa {
+            padding: 12px;
+            font-size: 15px;
+            width: 40px;
+            text-align: center;
+            text-decoration: none;
+            margin: 5px 2px;
+            border-radius: 50%;
+        }
+
+        .fa:hover {
+            /*opacity: 0.7;*/
+            color: white!important;
+            text-decoration: none;
+        }
+
+        .fa-facebook {
+            background: #3B5998;
+            color: white;
+        }
+
+        .fa-twitter {
+            background: #55ACEE;
+            color: white;
+        }
+
+        .fa-google {
+            background: #dd4b39;
+            color: white;
+        }
+
+        .fa-linkedin {
+            background: #007bb5;
+            color: white;
+        }
+
+        .fa-youtube {
+            background: #bb0000;
+            color: white;
+        }
+
+        .fa-instagram {
+            background: #125688;
+            color: white;
+        }
+
+        .fa-pinterest {
+            background: #cb2027;
+            color: white;
+        }
+
+        .fa-snapchat-ghost {
+            background: #fffc00;
+            color: white;
+            text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+        }
+
+        .fa-skype {
+            background: #00aff0;
+            color: white;
+        }
+
+        .fa-android {
+            background: #a4c639;
+            color: white;
+        }
+
+        .fa-dribbble {
+            background: #ea4c89;
+            color: white;
+        }
+
+        .fa-vimeo {
+            background: #45bbff;
+            color: white;
+        }
+
+        .fa-tumblr {
+            background: #2c4762;
+            color: white;
+        }
+
+        .fa-vine {
+            background: #00b489;
+            color: white;
+        }
+
+        .fa-foursquare {
+            background: #45bbff;
+            color: white;
+        }
+
+        .fa-stumbleupon {
+            background: #eb4924;
+            color: white;
+        }
+
+        .fa-flickr {
+            background: #f40083;
+            color: white;
+        }
+
+        .fa-yahoo {
+            background: #430297;
+            color: white;
+        }
+
+        .fa-soundcloud {
+            background: #ff5500;
+            color: white;
+        }
+
+        .fa-reddit {
+            background: #ff5700;
+            color: white;
+        }
+
+        .fa-rss {
+            background: #ff6600;
+            color: white;
+        }
     </style>
     <div class="first-bg">
-       <a href="{{url('')}}"> <h2 class="blue-color" style="position:fixed;">Your Dream is here</h2></a>
+{{--       <a href="{{url('')}}"> <h2 class="blue-color" style="position:fixed;">Your Dream is here</h2></a>--}}
         @if(\Illuminate\Support\Facades\Session::has('userId'))
             <a class="href-color" href="{{url('home')}}" style="float: right;">Dashboard</a>
         @else
             <a class="href-color" href="{{url('user-login')}}" style="float: right;">Login</a>
         @endif
         <div style="margin-top: 250px" class="circle">
-            <h1 class="blue-color" style="text-align: center">Dream Do Come True</h1>
-            <h1 class="blue-color" style="text-align: center">From</h1>
-            <h1 class="blue-color" style="text-align: center">Your Dreams</h1>
+            <h1 class="blue-color" style="text-align: center;font-size: 60px">Dream Do Come True</h1>
+            <h1 class="blue-color" style="text-align: center;font-size: 60px">From</h1>
+            <h1 class="blue-color" style="text-align: center;font-size: 60px">Your Dreams</h1>
         </div>
     </div>
 
@@ -170,9 +291,9 @@
                     </h4><h4 style="color: white">In a couple of days I got
                     </h4><h4 style="color: white">promotion and much bigger
                     </h4>
-                    <h4 style="color: white">pay slip, and my team gave me
+                    <h4 style="color: white">pay slip, and my team gave
                     </h4>
-                    <h4 style="color: white"> a wonderful gift.
+                    <h4 style="color: white">me a wonderful gift.
 
                     </h4>
                     <h4 style="color: white">Claire
@@ -253,7 +374,7 @@
                 <h3 style="text-align: center;" class="blue-color">BELOW</h3>
                 <form method="post" action="{{url('/open-payment')}}">
                     @csrf
-                    <textarea class="form-control" style="height: 400px;margin-top: 20px;margin-bottom: 20px;padding: 15px" name="dream" placeholder="Write your dream here.." required></textarea>
+                    <textarea class="form-control" style="height: 400px;margin-top: 20px;margin-bottom: 20px;padding: 15px;background: #a9dbff" name="dream" placeholder="Write your dream here.." required></textarea>
                     <div style="margin: 0 auto;max-width: 200px">
                         <button style="padding: 20px;border: 1px solid #39c0de;background: #0d1c9a" class="blue-color">Translate Your Dream</button>
                     </div>
@@ -299,6 +420,16 @@
 
         </div>
     </div>
+    <div style="background: #0d1c9a ">
+        <div style="padding: 30px;margin: 0 auto;max-width: 300px">
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-google"></a>
+{{--            <a href="#" class="fa fa-youtube"></a>--}}
+            <a href="#" class="fa fa-instagram"></a>
+        </div>
+    </div>
+
 
 
 @endsection

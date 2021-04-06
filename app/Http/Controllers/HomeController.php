@@ -78,10 +78,10 @@ class HomeController extends Controller
         $user = User::where('id', Session::get('userId'))->first();
         $user->active= 0;
         $user->update();
-        $subject = new SendEmailService(new EmailSubject("Sad to see you go!"));
+        $subject = new SendEmailService(new EmailSubject("Sad to see you go from dreaming123 community!"));
         $mailTo = new EmailAddress($user->email);
         $invitationMessage = new InvitationMessageBody();
-        $emailBody = "<h3>\"Sad to see you go! You are unsubscribed. Your card will not be charged every month automatically!\"</h3>";
+        $emailBody = "<div style=\"margin: 0 auto;max-width: 600px;background: rgba(211,211,211,0.68);padding: 30px\"><h4>Sad to see you go from dreaming123 community! You are unsubscribed. Your card will not be charged every month automatically!</h4></div>";
         $body = new EmailBody($emailBody);
         $emailMessage = new EmailMessage($subject->getEmailSubject(), $mailTo, $body);
         $sendEmail = new EmailSender(new PhpMail(new MailConf("smtp.gmail.com", "admin@dispatch.com", "secret-2021")));
@@ -98,10 +98,10 @@ class HomeController extends Controller
         $user->active= 0;
         $user->update();
 
-        $subject = new SendEmailService(new EmailSubject("Sad to see you go!"));
+        $subject = new SendEmailService(new EmailSubject("Sad to see you go from dreaming123 community!"));
         $mailTo = new EmailAddress($user->email);
         $invitationMessage = new InvitationMessageBody();
-        $emailBody = "<h3>\"Sad to see you go! You are unsubscribed. Your card will not be charged every month automatically!\"</h3>";
+        $emailBody = "<div style=\"margin: 0 auto;max-width: 600px;background: rgba(211,211,211,0.68);padding: 30px\"><h4>Sad to see you go from dreaming123 community! You are unsubscribed. Your card will not be charged every month automatically!</h4></div>";
         $body = new EmailBody($emailBody);
         $emailMessage = new EmailMessage($subject->getEmailSubject(), $mailTo, $body);
         $sendEmail = new EmailSender(new PhpMail(new MailConf("smtp.gmail.com", "admin@dispatch.com", "secret-2021")));
@@ -243,24 +243,16 @@ class HomeController extends Controller
         $chat->receiver = $request->receiver;
         $chat->message = $request->message;
         $chat->save();
-        $receiverId = User::where('email', $request->receiver)->first()['id'];
-        return redirect('chat-details/' . $receiverId);
+        return redirect('chat-details/');
     }
 
-    public function chatDetails($id){
-        $other = User::where('id', $id)->first();
-        $otherUserEmail = $other['email'];
+    public function chatDetails(){
         $me = User::where('id', Session::get('userId'))->first();
         $myEmail = $me['email'];
-        $unread = Chat::where('sender', $otherUserEmail)->get();
-        foreach ($unread as $read){
-            $read->status = 1;
-            $read->update();
-        }
 
 
-        $chat = Chat::whereIn('sender', [$otherUserEmail, $myEmail])->orWhereIn('receiver', [$otherUserEmail, $myEmail])->distinct()->get();
-        return view('chat-details')->with(['chat' => $chat, 'userEmail' => $otherUserEmail, 'userName' => $other['name'], 'myEmail' => $myEmail]);
+        $chat = Chat::where('id','>',0)->get();
+        return view('chat-details')->with(['chat' => $chat, 'myEmail' => $myEmail]);
 
     }
 
