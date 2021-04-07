@@ -258,7 +258,7 @@
     </div>
     <div class="third-bg">
         <div style="margin-top: 25px">
-            <div style="margin: 0 auto;max-width: 50px">
+            <div style="margin: 0 auto;max-width: 10px">
                 <div style="height: 10vh;border-left: 5px dotted #39c0de"></div>
             </div>
             <div class="main-content">
@@ -303,7 +303,7 @@
             </div>
 
             <div class="main-content">
-                <div class="left-section" style="margin-left: 25px;margin-top: -150px; flex: 1 0 300px;">
+                <div class="left-section" style="margin-left: 40px;margin-top: -150px; flex: 1 0 300px;">
                                         <h3 style="border-bottom: 5px solid #39c0de;color: white;width: 180px">MY DREAM CAME TRUE</h3>
                                         <h4 style="color: white;margin-top: 15px">Today I woke and the first  </h4>
                                         <h4 style="color: white"> thing I did was open this site </h4>
@@ -342,7 +342,7 @@
                 </div>
             </div>
 
-            <div style="margin: 0 auto;max-width: 800px;margin-top: 100px;">
+            <div style="margin: 0 auto;max-width: 1000px;margin-top: 100px;">
                 <div>
                     <h3 style="text-align: center;color: white">HOW IT WORKS</h3>
                     <h4 style="color: white;margin-top: 25px">You start by describing your dream. </h4>
@@ -421,12 +421,13 @@
         </div>
     </div>
     <div style="background: #0d1c9a ">
-        <div style="padding: 30px;margin: 0 auto;max-width: 300px">
+        <div style="padding: 30px;margin: 0 auto;max-width: 350px">
             <a href="#" class="fa fa-facebook"></a>
             <a href="#" class="fa fa-twitter"></a>
-            <a href="#" class="fa fa-google"></a>
-{{--            <a href="#" class="fa fa-youtube"></a>--}}
+            <a href="#" class="fa fa-snapchat-ghost"></a>
             <a href="#" class="fa fa-instagram"></a>
+            <a href="#" class="fa fa-pinterest"></a>
+            <a href="#" class="fa fa-reddit"></a>
         </div>
     </div>
 

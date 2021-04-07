@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use services\CSVModal;
 use services\email_messages\InvitationMessageBody;
+use services\email_messages\UnsubscribeMessage;
 use services\email_services\EmailAddress;
 use services\email_services\EmailBody;
 use services\email_services\EmailMessage;
@@ -80,13 +81,19 @@ class HomeController extends Controller
         $user->update();
         $subject = new SendEmailService(new EmailSubject("Sad to see you go from dreaming123 community!"));
         $mailTo = new EmailAddress($user->email);
-        $invitationMessage = new InvitationMessageBody();
-        $emailBody = "<div style=\"margin: 0 auto;max-width: 600px;background: rgba(211,211,211,0.68);padding: 30px\"><h4>Sad to see you go from dreaming123 community! You are unsubscribed. Your card will not be charged every month automatically!</h4></div>";
+        $invitationMessage = new UnsubscribeMessage();
+        $emailBody = $invitationMessage->unsubscribeMessageBody();
         $body = new EmailBody($emailBody);
         $emailMessage = new EmailMessage($subject->getEmailSubject(), $mailTo, $body);
         $sendEmail = new EmailSender(new PhpMail(new MailConf("smtp.gmail.com", "admin@dispatch.com", "secret-2021")));
         $result = $sendEmail->send($emailMessage);
-        return redirect()->back();
+        $dreams = dreams::where('user_id', $user->id)->get();
+        foreach ($dreams as  $dream){
+            $dream->delete();
+        }
+        $user->delete();
+        Session::flush();
+        return redirect('');
     }
 
     public function unsubscribe($token){
@@ -100,13 +107,19 @@ class HomeController extends Controller
 
         $subject = new SendEmailService(new EmailSubject("Sad to see you go from dreaming123 community!"));
         $mailTo = new EmailAddress($user->email);
-        $invitationMessage = new InvitationMessageBody();
-        $emailBody = "<div style=\"margin: 0 auto;max-width: 600px;background: rgba(211,211,211,0.68);padding: 30px\"><h4>Sad to see you go from dreaming123 community! You are unsubscribed. Your card will not be charged every month automatically!</h4></div>";
+        $invitationMessage = new UnsubscribeMessage();
+        $emailBody = $invitationMessage->unsubscribeMessageBody();
         $body = new EmailBody($emailBody);
         $emailMessage = new EmailMessage($subject->getEmailSubject(), $mailTo, $body);
         $sendEmail = new EmailSender(new PhpMail(new MailConf("smtp.gmail.com", "admin@dispatch.com", "secret-2021")));
         $result = $sendEmail->send($emailMessage);
-        return "Sad to see you go! You are unsubscribed. Your card will not be charged every month automatically!";
+        $dreams = dreams::where('user_id', $user->id)->get();
+        foreach ($dreams as  $dream){
+            $dream->delete();
+        }
+        $user->delete();
+        Session::flush();
+        return $emailBody;
     }
 
     public function activateSubscription($id){

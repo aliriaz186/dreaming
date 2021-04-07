@@ -98,7 +98,11 @@
                 @endif
                 <form method="post" action="{{url('complete-registration')}}">
                     @csrf
-                    <h3 style="text-align: center;" class="blue-color"><span style="font-size: 40px">Access Your Dream</span></h3>
+                    <h3 style="text-align: center;" class="blue-color"><span style="font-size: 30px">Access Your Dream</span><br>
+                        <span style="font-size: 30px">£1.99</span><br>
+                        <span style="font-size: 11px">per month</span><br>
+                        <span style="font-size: 11px">Billed every month.</span><br>
+                    </h3>
                     <div class="row" style="margin-top: 30px">
                         <div class="col-md-6">
                             <input style=";color: white" type="text" class="form-control myinput" name="name"
@@ -155,10 +159,8 @@
                     </div>
                     <div style="margin: 0 auto;max-width: 250px;margin-top: 35px">
                         <button type="submit" style="padding: 20px;border: 1px solid #39c0de;background: #0d1c9a;font-weight: bold" class="blue-color">
-                           <span style="font-size: 18px">Complete registration</span><br>
-                            <span style="font-size: 25px">£1.99</span><br>
-                           <span style="font-size: 12px">per month</span><br>
-                            <span style="font-size: 12px">Billed every month.</span><br>
+                           <span style="font-size: 18px">Complete Registration</span><br>
+
                         </button>
                         <br>
                         <br>
