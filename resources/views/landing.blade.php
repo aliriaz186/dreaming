@@ -219,6 +219,23 @@
             background: #ff6600;
             color: white;
         }
+        .marginresp {
+            margin-top: 200px!important;
+        }
+        .respdreamcame {
+            margin-top: -150px!important;
+            margin-left: 40px!important;
+        }
+        @media only screen and (max-width: 600px) {
+            .marginresp {
+               margin-top: 400px!important;
+
+            }
+            .respdreamcame {
+               margin-top: 10px!important;
+                margin-left: 0px!important;
+            }
+        }
     </style>
     <div class="first-bg">
 {{--       <a href="{{url('')}}"> <h2 class="blue-color" style="position:fixed;">Your Dream is here</h2></a>--}}
@@ -229,8 +246,8 @@
         @endif
         <div style="margin-top: 250px" class="circle">
             <h1 class="blue-color" style="text-align: center;font-size: 60px">Allow your Dreams</h1>
-            <h1 class="blue-color" style="text-align: center;font-size: 60px">to</h1>
-            <h1 class="blue-color" style="text-align: center;font-size: 60px">become Real!</h1>
+            <h1 class="blue-color" style="text-align: center;font-size: 60px">to become</h1>
+            <h1 class="blue-color" style="text-align: center;font-size: 60px">Real!</h1>
         </div>
     </div>
 
@@ -303,7 +320,7 @@
             </div>
 
             <div class="main-content">
-                <div class="left-section" style="margin-left: 40px;margin-top: -150px; flex: 1 0 300px;">
+                <div class="left-section respdreamcame" style="flex: 1 0 300px;">
                                         <h3 style="border-bottom: 5px solid #39c0de;color: white;width: 180px">MY DREAM CAME TRUE</h3>
                                         <h4 style="color: white;margin-top: 15px">Today I woke and the first  </h4>
                                         <h4 style="color: white"> thing I did was open this site </h4>
@@ -368,7 +385,7 @@
 
     <div class="fourth-bg" id="translatedream">
 
-        <div style="margin: 0 auto;max-width: 800px;margin-top: 200px;">
+        <div class="marginresp" style="margin: 0 auto;max-width: 800px;">
             <div>
                 <h3 style="text-align: center;" class="blue-color">TYPE YOUR DREAM</h3>
                 <h3 style="text-align: center;" class="blue-color">BELOW</h3>
