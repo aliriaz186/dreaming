@@ -231,7 +231,7 @@
         }
         @media only screen and (max-width: 600px) {
             .marginresp {
-               margin-top: 700px!important;
+               margin-top: 920px!important;
             }
             .marginrespcontact {
                margin-top: 100px!important;
