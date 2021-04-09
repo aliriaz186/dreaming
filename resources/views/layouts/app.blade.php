@@ -165,6 +165,15 @@
 
 </div>
 <script>
+
+    $("#close-sidebar").click(function () {
+        $(".page-wrapper").removeClass("toggled");
+    });
+    $("#show-sidebar").click(function () {
+        $(".page-wrapper").addClass("toggled");
+    });
+
+
     function logoutUser()
     {
         event.preventDefault();
@@ -184,7 +193,19 @@
         }
     }
 
+    function myFunction(x) {
+        if (x.matches) { // If media query matches
+            $(".page-wrapper").removeClass("toggled");
+        } else {
+
+        }
+    }
+
     $(document).ready(function(){
+        var x = window.matchMedia("(max-width: 600px)")
+        myFunction(x) // Call listener function at run time
+        x.addListener(myFunction) // Attach listener function on state changes
+
         // if (!Notification) {
         //     alert('Desktop notifications not available in your browser. Try Chromium.');
         //     return;
@@ -235,12 +256,7 @@
             }
         });
 
-        $("#close-sidebar").click(function () {
-            $(".page-wrapper").removeClass("toggled");
-        });
-        $("#show-sidebar").click(function () {
-            $(".page-wrapper").addClass("toggled");
-        });
+
 
     });
 </script>
