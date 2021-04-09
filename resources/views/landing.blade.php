@@ -14,7 +14,7 @@
         .second-bg {
             background-position: center;
             background-repeat: no-repeat;
-            background-size: cover;;
+            background-size: cover;
             /*height: 900px;*/
             background-repeat: no-repeat;
             background-image: url('images/Use this 2.png');
@@ -222,18 +222,29 @@
         .marginresp {
             margin-top: 200px!important;
         }
+        .marginrespcontact {
+            margin-top: 200px!important;
+        }
         .respdreamcame {
             margin-top: -150px!important;
             margin-left: 40px!important;
         }
         @media only screen and (max-width: 600px) {
             .marginresp {
-               margin-top: 400px!important;
-
+               margin-top: 700px!important;
+            }
+            .marginrespcontact {
+               margin-top: 100px!important;
             }
             .respdreamcame {
                margin-top: 10px!important;
-                margin-left: 0px!important;
+               margin-left: 0px!important;
+            }
+            .fourth-bg {
+                height: 1500px;
+            }
+            .second-bg {
+                /*margin-top: -100px;*/
             }
         }
     </style>
@@ -267,7 +278,7 @@
                 <h1 style="color: white;font-size: 40px">63%</h1>
                 <h6 class="grey-color font-size-small"> Dreams Predict Future </h6>
             </div>
-            <h1 style="text-align: center;margin-top: 100px" class="grey-color">*WE ALL DREAM*</h1>
+            <h1 style="text-align: center;margin-top: 100px" class="grey-color">WE ALL DREAM</h1>
             <h1 style="text-align: center;margin-top: 100px" class="blue-color">REAL</h1>
             <h1 style="text-align: center;margin-top: 5px" class="blue-color">STORIES</h1>
 
@@ -404,7 +415,7 @@
 
     <div class="fourth-bg">
 
-        <div style="margin: 0 auto;max-width: 800px;margin-top: 200px;">
+        <div class="marginrespcontact" style="margin: 0 auto;max-width: 800px;">
             <div>
                 <form method="post" action="{{url('send-email')}}">
                     @csrf
@@ -437,7 +448,7 @@
 
         </div>
     </div>
-    <div style="background: #0d1c9a ">
+    <div style="background: #0d1c9a">
         <div style="padding: 30px;margin: 0 auto;max-width: 350px">
             <a href="#" class="fa fa-facebook"></a>
             <a href="#" class="fa fa-twitter"></a>
