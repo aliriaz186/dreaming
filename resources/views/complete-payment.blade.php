@@ -98,7 +98,7 @@
                 @endif
                 <form method="post" action="{{url('complete-registration')}}">
                     @csrf
-                    <h3 style="text-align: center;" class="blue-color"><span style="font-size: 30px">Access Your Dream</span><br>
+                    <h3 style="text-align: center;" class="blue-color"><span style="font-size: 45px">Access Your Dream</span><br>
                         <span style="font-size: 30px">£1.99</span><br>
                         <span style="font-size: 11px">per month</span><br>
                         <span style="font-size: 11px">Billed every month.</span><br>

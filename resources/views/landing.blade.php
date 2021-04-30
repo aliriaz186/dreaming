@@ -229,7 +229,17 @@
             margin-top: -150px!important;
             margin-left: 40px!important;
         }
+        .fixedwidthpc{
+            width: 180px!important;
+        }
+        .howitworktext{
+            margin-top: 30px;
+        }
         @media only screen and (max-width: 600px) {
+            .fixedwidthpc{
+                width: 400px;
+                text-align: center;
+            }
             .marginresp {
                margin-top: 920px!important;
             }
@@ -245,6 +255,19 @@
             }
             .second-bg {
                 /*margin-top: -100px;*/
+            }
+            .left-section{
+                margin: 0 auto;
+                max-width: 300px;
+
+            }
+            .right-section{
+                margin: 0 auto;
+                max-width: 300px;
+                /*margin-left: 10px;*/
+            }
+            .howitworktext{
+                margin-top: 50px;
             }
         }
     </style>
@@ -291,13 +314,13 @@
             </div>
             <div class="main-content">
                 <div class="left-section">
-                    <h3 style="border-bottom: 5px solid #39c0de;color: white;width: 180px">RELATIONSHIP</h3>
+                    <h3 class="fixedwidthpc" style="border-bottom: 5px solid #39c0de;color: white;">RELATIONSHIP</h3>
                     <h4 style="color: white;margin-top: 15px">I had a dream about flying </h4>
                     <h4 style="color: white"> ducks, and I had no idea why</h4>
                     <h4 style="color: white"> would I dream that, but then I </h4>
                     <h4 style="color: white">look up what means "Ducks"  </h4>
                     <h4 style="color: white">and it all made sense.</h4>
-                    <h4 style="color: white;margin-top: 25px">Thank you so much, this site  </h4>
+                    <h4 style="color: white;">Thank you so much, this site  </h4>
                     <h4 style="color: white">has changed my life.</h4>
                     <h4 style="color: white">Emma</h4>
                 </div>
@@ -305,7 +328,7 @@
 
                 </div>
                 <div class="right-section">
-                    <h3 style="border-bottom: 5px solid #39c0de;color: white">MONEY</h3>
+                    <h3 style="border-bottom: 5px solid #39c0de;color: white;text-align: center" class="fixedwidthpc">MONEY</h3>
                     <h4 style="color: white;margin-top: 15px">My dream was so strange...
                     </h4>
                     <h4 style="color: white">I was on vacation and was
@@ -331,15 +354,15 @@
             </div>
 
             <div class="main-content">
-                <div class="left-section respdreamcame" style="flex: 1 0 300px;">
-                                        <h3 style="border-bottom: 5px solid #39c0de;color: white;width: 180px">MY DREAM CAME TRUE</h3>
+                <div class="respdreamcame left-section " style="flex: 1 0 300px;">
+                                        <h3 class="fixedwidthpc" style="border-bottom: 5px solid #39c0de;color: white;">MY DREAM CAME TRUE</h3>
                                         <h4 style="color: white;margin-top: 15px">Today I woke and the first  </h4>
                                         <h4 style="color: white"> thing I did was open this site </h4>
                                         <h4 style="color: white"> on my phone. I was looking to  </h4>
                                         <h4 style="color: white">see what my dream was telling  </h4>
                                         <h4 style="color: white">me.
                                         </h4>
-                                        <h4 style="color: white;margin-top: 25px"> In my dream I was at the train  </h4>
+                                        <h4 style="color: white;"> In my dream I was at the train  </h4>
                                         <h4 style="color: white"> station waiting for a train, but</h4>
                                         <h4 style="color: white"> it never came so I left a </h4>
                                         <h4 style="color: white"> station...
@@ -370,16 +393,15 @@
                 </div>
             </div>
 
-            <div style="margin: 0 auto;max-width: 1000px;margin-top: 100px;">
+            <div style="margin: 0 auto;max-width: 1000px;margin-top: 130px;">
                 <div>
                     <h3 style="text-align: center;color: white">HOW IT WORKS</h3>
-                    <h4 style="color: white;margin-top: 25px">You start by describing your dream. </h4>
+                    <h4 style="color: white;" class="howitworktext">You start by describing your dream. </h4>
                     <h4 style="color: white"> Example-I received big salary, and I went to store and bought many things on sale. </h4>
                     <h4 style="color: white"> In this description there is key words, what have interpretations, key words are SALARY, STORE, SALE.   </h4>
                     <h4 style="color: white">These words are important whey are ones that make your dream into a story.  </h4>
-                    <h4 style="color: white">Example-SALE means, financial increase, gift and wealth etc.
-                    </h4>
-                    <h4 style="color: white;margin-top: 25px"> From interpretations you begin to create your own story, you take only what resonates with you at this time in your life. </h4>
+                    <h4 style="color: white">Example-SALE means, financial increase, gift and wealth etc.</h4>
+                    <h4 style="color: white;"> From interpretations you begin to create your own story, you take only what resonates with you at this time in your life. </h4>
                     <h4 style="color: white"> Dreams tell you what you really feel, or will soon have.</h4>
                     <h4 style="color: white"> Some words can be in different synonyms as a key word. </h4>
                 </div>
@@ -450,12 +472,12 @@
     </div>
     <div style="background: #0d1c9a">
         <div style="padding: 30px;margin: 0 auto;max-width: 350px">
-            <a href="#" class="fa fa-facebook"></a>
-            <a href="#" class="fa fa-twitter"></a>
-            <a href="#" class="fa fa-snapchat-ghost"></a>
-            <a href="#" class="fa fa-instagram"></a>
-            <a href="#" class="fa fa-pinterest"></a>
-            <a href="#" class="fa fa-reddit"></a>
+            <a target="_blank" href="https://www.facebook.com/mreads.mocs" class="fa fa-facebook"></a>
+            <a target="_blank" href="http://www.twitter.com/dreamsComeTr15" class="fa fa-twitter"></a>
+            <a target="_blank" href="#" class="fa fa-snapchat-ghost"></a>
+            <a target="_blank" href="https://instagram.com/truedream9826?igshid=1uc8x4m15uvo2" class="fa fa-instagram"></a>
+            <a target="_blank" href="https://www.pinterest.co.uk/dreams_comes/pins/" class="fa fa-pinterest"></a>
+            <a target="_blank" href="#" class="fa fa-reddit"></a>
         </div>
     </div>
 

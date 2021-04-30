@@ -8,6 +8,8 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <meta charset="UTF-8">
+    <meta name="description" content="Dreaming123 is a platform to know the meaning of your dreams. Allow your dreams to become real">
+    <meta name="keywords" content="Dreaming,dreams,real,mydream,meanings">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <link href="{{asset('bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/stylesheet.css')}}" rel="stylesheet">
